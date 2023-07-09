@@ -2,7 +2,7 @@ import React from "react";
 
 function SocialLink() {
   return (
-    <div className="Social_link_holder">
+    <div className="Social_link_holder container-fluid">
       <div className="git_link_holder">
         <a
           href="https://github.com/harshbhange0/weather_app_react"

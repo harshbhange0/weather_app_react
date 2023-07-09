@@ -12,7 +12,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   color: #e3e3e3;
   background-image: url(https://images.theconversation.com/files/232705/original/file-20180820-30593-1nxanpj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop);
   background-position: center;
@@ -137,7 +136,6 @@ body {
 }
 .Social_link_holder {
   position: absolute;
-  bottom: 0.5%;
   width: 100%;
   display: flex;
   justify-content: space-around;
