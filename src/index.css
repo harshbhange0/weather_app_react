@@ -56,5 +56,16 @@ body {
     transform: rotate(1deg);
   }
 }
+@media (max-width: 400px) {
+  .Social_link_holder {
+    position: fixed;
+    top: 0;
+  }
+}
 
-
+@media (min-width: 401px) {
+  .Social_link_holder {
+    position: fixed;
+    bottom: 0;
+  }
+}
