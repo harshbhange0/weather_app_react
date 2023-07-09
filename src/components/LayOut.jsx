@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Searchbar from "./Searchbar";
@@ -11,11 +11,8 @@ function LayOut() {
   const [inputText, setInputText] = useState("");
   const [dataRes, setDataRes] = useState(null);
   const [error, setError] = useState("");
-  const [showWeather, setShowWeather] = useState(false); // New state for showing/hiding weather component
-
-  useEffect(() => {
-    getResponse();
-  });
+  const [showWeather, setShowWeather] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getResponse = async () => {
     if (!inputText) {
@@ -26,53 +23,69 @@ function LayOut() {
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=478ae5eff8b526add49eea33b05b7993&units=metric`;
 
     try {
+      setIsLoading(true); 
       const response = await axios.get(URL);
       setDataRes(response.data);
       console.log(response.data);
       setError("");
-      setShowWeather(true);
     } catch (error) {
       console.error(error);
       setError("Information Not Found (Code 404)");
+      setDataRes(null);
+      if (error) {
+        toast.warning("Please enter a valid location");
+      }
       toast.error("Information Not Found (Code 404)");
-      setInputText("");
-      setShowWeather(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleInputChange = (text) => {
     setInputText(text);
   };
+
+  const handleButtonClick = () => {
+    getResponse();
+    if (!error) {
+      toast.info("Fetching weather information...");
+    }
+  };
+
+  useEffect(() => {
+   
+    const timer = setTimeout(() => {
+      setShowWeather(true);
+    }, 4000);
+
+    return () => clearTimeout(timer); 
+  }, []);
+
   return (
     <div className="container">
-      <SocialLink/>
+      <SocialLink />
       <div className="row">
         <div className="col">
           <div className="container d-flex flex-column">
             <h1 className="my-2">Weather App</h1>
             <div className="input_holder">
-              <Searchbar onChange={handleInputChange} btnClick={getResponse} />
+              <Searchbar onChange={handleInputChange} btnClick={handleButtonClick} />
               <DateCompo />
-
             </div>
-            {error ? (
-              <p className="fs-4">{error}</p> 
-
-            ) : (
-              <div className={`weather-container ${showWeather ? "show" : ""}`}>
-                {showWeather && dataRes && dataRes.weather ? (
-                  <Weather
-                    weatherIcon={`https://openweathermap.org/img/wn/${dataRes.weather[0]?.icon}@2x.png`}
-                    Itext={inputText}
-                    weatherType={dataRes.weather[0]?.main}
-                    humidity={dataRes.main?.humidity}
-                    temp={dataRes.main?.temp}
-                    wind={dataRes.wind?.speed}
-                  />
-                ) : (
-                  <p>Loading...</p>
-                )}
+            {isLoading && <p className="fs-4">Fetching weather information...</p>}
+            {!isLoading && showWeather && dataRes && dataRes.weather ? (
+              <div className="weather-container show">
+                <Weather
+                  weatherIcon={`https://openweathermap.org/img/wn/${dataRes.weather[0]?.icon}@2x.png`}
+                  Itext={inputText}
+                  weatherType={dataRes.weather[0]?.main}
+                  humidity={dataRes.main?.humidity}
+                  temp={dataRes.main?.temp}
+                  wind={dataRes.wind?.speed}
+                />
               </div>
+            ) : (
+              <p className="fs-4">{error}</p>
             )}
           </div>
         </div>

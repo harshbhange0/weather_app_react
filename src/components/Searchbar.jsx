@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Searchbar({ onChange, btnClick }) {
+  const [inputValue, setInputValue] = useState("");
+
   const handleChange = (event) => {
     const text = event.target.value;
+    setInputValue(text); // Update the input value
     onChange(text);
   };
 
   const handleButtonClick = () => {
     btnClick();
+    setInputValue(""); // Clear the input value
   };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       btnClick();
+      setInputValue(""); // Clear the input value
     }
   };
 
@@ -20,6 +25,7 @@ function Searchbar({ onChange, btnClick }) {
     <div className="search_holder">
       <input
         placeholder="Enter Any City"
+        value={inputValue} 
         onChange={handleChange}
         onKeyPress={handleKeyPress}
         type="text"
@@ -31,4 +37,3 @@ function Searchbar({ onChange, btnClick }) {
 }
 
 export default Searchbar;
-

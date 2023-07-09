@@ -6,20 +6,21 @@
 body {
   position: relative;
   height: 100vh;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  color: #e3e3e3;
 }
 
-/* body::before {
-    content: url(./react-logo.png);
-    opacity: .05;
+ body::before {
+    content: url(https://images.theconversation.com/files/232705/original/file-20180820-30593-1nxanpj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop);
+    opacity: 1;
+    z-index: -2999;
     position: absolute;
-    z-index: -999999;
     background-position: center;
-} */
+ }
 
 .container {
   display: flex;
@@ -29,12 +30,7 @@ body {
 
 .col .container {
   background: rgb(93, 237, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(93, 237, 255, 1) 0%,
-    rgba(93, 109, 253, 0.525) 50%,
-    rgba(93, 237, 255, 1) 100%
-  );
+  background: linear-gradient( 180deg, #c18c7e 0%, rgb(90 104 172) 50%, rgb(111 125 191) 100% );
   border-radius: 0.5rem;
   transition: all 0.3s ease-in;
 }
@@ -46,6 +42,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 99999;
 }
 
 .search_holder {
@@ -87,6 +84,7 @@ body {
 
 .search_btn {
   cursor: pointer;
+  color: #535353;
 }
 
 .search_btn:active {
@@ -94,8 +92,10 @@ body {
 }
 
 .time_date_holder {
-  display: flex;
+  color: #535353;
   width: 100%;
+  display: flex;
+align-items: center;
   justify-content: space-between;
 }
 
@@ -134,7 +134,7 @@ body {
 }
 .Social_link_holder {
   position: absolute;
-  bottom: 0;
+  bottom: 0.5%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -163,5 +163,24 @@ body {
   align-items: center;
   margin: 0;
   padding: 0;
+}
+.weather_holder{
+  justify-content: space-between !important;
+  padding: 1rem !important;
+}
+.weather_icon_holder{ 
+  background: rgba(255, 255, 255, 0.1) ;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+.weather_icon{
+  height: 90px;
+}
+.weather_icon_holder{ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
