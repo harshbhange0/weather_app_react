@@ -2,7 +2,9 @@
   --bg-color: #ffd5d5;
   --bg-holder: rgba(255, 255, 255, 0.521);
 }
-
+i{
+  margin-right: .3rem ;
+}
 body {
   position: relative;
   height: 100vh;
@@ -78,8 +80,8 @@ body {
 }
 
 .search_holder:focus-within {
-  box-shadow: 0 0.1rem 0.3rem #00000080;
-  transform: translate3d(1px, 0.1px, 1px);
+  box-shadow: 0 0 0.3rem #0091ff80;
+  transform: translate3d(0, 1px, 0);
 }
 
 .search_btn {

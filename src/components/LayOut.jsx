@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Searchbar from "./Searchbar";
 import DateCompo from "./DateCompo";
@@ -18,24 +18,25 @@ function LayOut() {
     if (!inputText) {
       setError("Please enter a location");
       return;
+    } else {
+      toast.info("Fetching weather information... btn");
     }
 
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=478ae5eff8b526add49eea33b05b7993&units=metric`;
 
     try {
-      setIsLoading(true); 
+      setIsLoading(true);
       const response = await axios.get(URL);
       setDataRes(response.data);
-      console.log(response.data);
       setError("");
     } catch (error) {
       console.error(error);
-      setError("Information Not Found (Code 404)");
+      setError("Information Not Found (Code 404) try");
       setDataRes(null);
       if (error) {
-        toast.warning("Please enter a valid location");
+        toast.warning("Please enter a valid location try");
       }
-      toast.error("Information Not Found (Code 404)");
+      toast.error("Information Not Found (Code 404) try");
     } finally {
       setIsLoading(false);
     }
@@ -47,18 +48,14 @@ function LayOut() {
 
   const handleButtonClick = () => {
     getResponse();
-    if (!error) {
-      toast.info("Fetching weather information...");
-    }
   };
 
   useEffect(() => {
-   
     const timer = setTimeout(() => {
       setShowWeather(true);
     }, 4000);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -69,10 +66,15 @@ function LayOut() {
           <div className="container d-flex flex-column">
             <h1 className="my-2">Weather App</h1>
             <div className="input_holder">
-              <Searchbar onChange={handleInputChange} btnClick={handleButtonClick} />
+              <Searchbar
+                onChange={handleInputChange}
+                btnClick={handleButtonClick}
+              />
               <DateCompo />
             </div>
-            {isLoading && <p className="fs-4">Fetching weather information...</p>}
+            {isLoading && (
+              <p className="fs-4">Fetching weather information...</p>
+            )}
             {!isLoading && showWeather && dataRes && dataRes.weather ? (
               <div className="weather-container show">
                 <Weather
@@ -90,7 +92,6 @@ function LayOut() {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }
