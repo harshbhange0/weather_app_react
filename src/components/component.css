@@ -30,7 +30,7 @@ body {
 .col .container {
   background: rgb(93, 237, 255);
   background: linear-gradient(
-  180deg,
+    180deg,
     rgba(93, 237, 255, 1) 0%,
     rgba(93, 109, 253, 0.525) 50%,
     rgba(93, 237, 255, 1) 100%
@@ -60,11 +60,11 @@ body {
   z-index: 99;
   background-color: var(--bg-holder);
 }
-.city_holder{ 
-    text-transform: capitalize;
+.city_holder {
+  text-transform: capitalize;
 }
 .search_input {
-    background-color: transparent;
+  background-color: transparent;
   outline: none;
   transition: 0.3s ease-in;
   border: 0;
@@ -127,8 +127,41 @@ body {
   opacity: 1;
 }
 .weather_info,
-.time_date_holder{
-    padding: .4rem;
-    background-color: rgba(225,225,225,0.20);
-    border-radius: .2rem;
+.time_date_holder {
+  padding: 0.4rem;
+  background-color: rgba(225, 225, 225, 0.5);
+  border-radius: 0.2rem;
 }
+.Social_link_holder {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 2em;
+}
+.Social_link_holder div a {
+  color: rgb(52, 52, 52);
+  text-decoration: none;
+  transition: text-decoration .50s ease
+}
+.Social_link_holder div a{
+ 
+}
+.Social_link_holder div {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Social_link_holder div a i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+

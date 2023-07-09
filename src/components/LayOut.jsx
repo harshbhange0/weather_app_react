@@ -5,6 +5,7 @@ import Searchbar from "./Searchbar";
 import DateCompo from "./DateCompo";
 import Weather from "./Weather";
 import axios from "axios";
+import SocialLink from "./SocialLink ";
 
 function LayOut() {
   const [inputText, setInputText] = useState("");
@@ -44,6 +45,7 @@ function LayOut() {
   };
   return (
     <div className="container">
+      <SocialLink/>
       <div className="row">
         <div className="col">
           <div className="container d-flex flex-column">
@@ -51,9 +53,11 @@ function LayOut() {
             <div className="input_holder">
               <Searchbar onChange={handleInputChange} btnClick={getResponse} />
               <DateCompo />
+
             </div>
             {error ? (
-              <p className="fs-4">{error}</p>
+              <p className="fs-4">{error}</p> 
+
             ) : (
               <div className={`weather-container ${showWeather ? "show" : ""}`}>
                 {showWeather && dataRes && dataRes.weather ? (
