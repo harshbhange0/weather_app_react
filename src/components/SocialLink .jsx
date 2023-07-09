@@ -35,7 +35,7 @@ function SocialLink() {
       </div>
       <div className="google_link_holder">
         <a
-          href="mailto:harshbhnage123@gmail.com"
+          href="mailto:harshbhange123@gmail.com"
           className="google_link"
           target="_blank"
           rel="noopener noreferrer"
