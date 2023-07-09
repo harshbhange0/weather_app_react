@@ -14,7 +14,7 @@ function LayOut() {
 
   useEffect(() => {
     getResponse();
-  }, []);
+  });
 
   const getResponse = async () => {
     if (!inputText) {
