@@ -2,28 +2,22 @@
   --bg-color: #ffd5d5;
   --bg-holder: rgba(255, 255, 255, 0.521);
 }
-i{
-  margin-right: .3rem ;
+i {
+  margin-right: 0.3rem;
 }
 body {
   position: relative;
   height: 100vh;
-  /* background-color: var(--bg-color); */
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   color: #e3e3e3;
-  overflow: hidden;
+  background-image: url(https://images.theconversation.com/files/232705/original/file-20180820-30593-1nxanpj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop);
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
- body::before {
-    content: url(https://images.theconversation.com/files/232705/original/file-20180820-30593-1nxanpj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop);
-    opacity: 1;
-    z-index: -2999;
-    position: absolute;
-    background-position: center;
- }
 
 .container {
   display: flex;
@@ -33,7 +27,12 @@ body {
 
 .col .container {
   background: rgb(93, 237, 255);
-  background: linear-gradient( 180deg, #c18c7e 0%, rgb(90 104 172) 50%, rgb(111 125 191) 100% );
+  background: linear-gradient(
+    180deg,
+    #c18c7e 0%,
+    rgb(90 104 172) 50%,
+    rgb(111 125 191) 100%
+  );
   border-radius: 0.5rem;
   transition: all 0.3s ease-in;
 }
@@ -98,7 +97,7 @@ body {
   color: #535353;
   width: 100%;
   display: flex;
-align-items: center;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -146,10 +145,9 @@ align-items: center;
 .Social_link_holder div a {
   color: rgb(52, 52, 52);
   text-decoration: none;
-  transition: text-decoration .50s ease
+  transition: text-decoration 0.5s ease;
 }
-.Social_link_holder div a{
- 
+.Social_link_holder div a {
 }
 .Social_link_holder div {
   width: 2.5rem;
@@ -167,23 +165,22 @@ align-items: center;
   margin: 0;
   padding: 0;
 }
-.weather_holder{
+.weather_holder {
   justify-content: space-between !important;
   padding: 1rem !important;
 }
-.weather_icon_holder{ 
-  background: rgba(255, 255, 255, 0.1) ;
+.weather_icon_holder {
+  background: rgba(255, 255, 255, 0.1);
   width: 7rem;
   height: 7rem;
   border-radius: 50%;
 }
-.weather_icon{
+.weather_icon {
   height: 90px;
 }
-.weather_icon_holder{ 
+.weather_icon_holder {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
